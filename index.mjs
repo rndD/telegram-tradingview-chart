@@ -13,8 +13,12 @@ bot.on('text', async (ctx) => {
     // // Using context shortcut
     // ctx.reply(`Hello ${ctx.state.role}`)
     if (ctx.message.text.startsWith('/')) {
-        const interval = ctx.message.text.slice(1);
-        const buf = await captureScreenshot(interval);
+        const ticker = ctx.message.text.slice(1);
+        if (!ticker) {
+          console.debug(`No ticker found`, ctx.message.text);
+          return;
+        }
+        const buf = await captureScreenshot(ticker);
         ctx.replyWithPhoto({source: buf});
     }
   })
