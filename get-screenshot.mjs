@@ -41,8 +41,9 @@ export async function captureScreenshot(ticker, interval='D') {
     console.log(`🎉 ${ticker}`);
   }
 
-  page.close();
 
+  browser.close();
+  
   return buf;
 }
 
